@@ -1,0 +1,209 @@
+\documentclass[11pt,letter,sans]{moderncv}
+
+\usepackage{natbib}
+\usepackage{bibentry,xr}
+\usepackage[left=0.5in, right=0.75in, top=0.375in, bottom=0.75in]{geometry}
+\usepackage{lastpage}
+
+\moderncvstyle{classic}
+\moderncvcolor{blue}
+\providecommand{\NOOP}[1]{}
+\setlength{\hintscolumnwidth}{0.1\textwidth}
+
+\linespread{0.9}
+
+\pagestyle{fancy}
+\rfoot{\thepage\ of \pageref{LastPage}}
+
+\renewcommand*{\cvitem}[3][6pt]{%
+	\begin{tabular}{@{}p{\hintscolumnwidth}@{\hspace{\separatorcolumnwidth}}p{\maincolumnwidth}@{}}%
+		\raggedleft\hintstyle{#2} &{#3}%
+	\end{tabular}%
+	\par\addvspace{#1}}
+
+\renewcommand*{\cventry}[7][0pt]{%
+	\cvitem[#1]{#2}{%
+		{\bfseries#3}%
+		\ifthenelse{\equal{#4}{}}{}{, {\slshape#4}}%
+		\ifthenelse{\equal{#5}{}}{}{, #5}%
+		\ifthenelse{\equal{#6}{}}{}{, #6}%
+		\strut%
+		\ifx&#7&%
+		\else{\newline{}\begin{minipage}[t]{\linewidth}\small#7\end{minipage}}\fi}}
+
+\renewcommand*{\cvitemwithcomment}[4][0pt]{%
+	\savebox{\cvitemwithcommentbox}{{#3}}%
+	\setlength{\cvitemwithcommentskilllength}{\widthof{\usebox{\cvitemwithcommentbox}}}%
+	\setlength{\cvitemwithcommentcommentlength}{\maincolumnwidth-\separatorcolumnwidth-\cvitemwithcommentskilllength}%
+	\cvitem[#1]{#2}{%
+		\begin{minipage}[t]{\cvitemwithcommentskilllength}\usebox{\cvitemwithcommentbox}\end{minipage}%
+		\hfill% fill of \separatorcolumnwidth
+		\begin{minipage}[t]{\cvitemwithcommentcommentlength}\raggedleft\small\itshape#4\end{minipage}}}
+
+\renewcommand*{\cvlistitem}[2][6pt]{%
+	\cvitem[#1]{}{\listitemsymbol\begin{minipage}[t]{\listitemcolumnwidth}#2\end{minipage}}}
+
+
+\makeatletter
+\@ifpackageloaded{moderncvstyleclassic}{%
+	\let\oldsection\section%
+	\renewcommand{\section}[1]{\leavevmode\unskip\vspace*{-\baselineskip}\oldsection{#1}}%
+}{%
+}
+\makeatother
+
+\newcounter{refcounter}
+% \newcommand{\refno}[1]{\refstepcounter{refcounter} [\therefcounter]\label{#1}}
+\newcommand{\refno}[1]{}
+
+%CONTACT
+\firstname{Nicholas Marc}
+\familyname{Fournier}
+\address{409 McLaughlin Hall}{University of California, Berkeley}{}
+%\mobile{774-236-0293} % Phone number
+\email{Nick.Fournier@Berkeley.edu} % Email ID
+
+
+\begin{document}
+	\nobibliography{mybib}
+	\bibliographystyle{plainnat}
+	
+   	\makecvtitle
+   	\vspace{-36pt}
+   	
+   	%\section{PERSONAL STATEMENT}
+   	%I am a PhD candidate with concurrent master's in transportation and regional planning pursuing a career in academia. My research and personal experiences have culminated into a strong belief in not accepting the status quo. I believe research and learning benefit from the cross-pollination of diverse ideas, perspectives, and approaches. A philosophy I try to practice in both my work and life.
+
+   	\section{EDUCATION}
+   	\cventry{}{University of Massachusetts, Amherst}{}{}{}{}
+   	\cvitemwithcomment[0pt]{2019}{Ph.D. Civil Engineering -- Transportation, \itshape GPA: 4.0}{}
+   	\cvitemwithcomment[0pt]{}{\itshape Dissertation: Equity and efficiency in multi-modal transportation systems}{}
+  	\cvitemwithcomment[0pt]{}{\itshape Advisor: Dr. Eleni Christofa}{}
+	\cvitemwithcomment[0pt]{2018}{M.S. Civil Engineering in Transportation}{}
+	\cvitemwithcomment[0pt]{}{Master of Regional Planning}{}
+   	%\cvitemwithcomment[0pt]{}{Master of Regional Planning}{}
+   	\cvitemwithcomment[0pt]{2011}{B.S. Civil \& Environmental Engineering}{}
+
+   	\section{EXPERIENCE}
+   	%RESEARCH
+   	%\cvitem{\bfseries RESEARCH}{}
+   	\cventry[1pt]{2020-~~~~~~}{Postdoctoral scholar -- University of California Berkeley}{}{}{}{}
+   	\cvitem[-14pt]{\refno{}}{}
+   	% \cvlistitem{\textit{\bfseries 
+   	% }
+  	\cvlistitem{\textit{\bfseries Improved Analysis Methodologies and Strategies for Complete Streets:} Development of improved complete streets analysis methodologies through theoretical analysis, computer simulation, and field testing in real-world complete street projects with emerging signal technologies.}
+   	
+   	\cventry[1pt]{2019-2020}{Research Fellow -- Monash University}{}{}{}{}
+   	\cvitem[-14pt]{\refno{ptrg}}{}
+   	\cvlistitem{\textit{\bfseries Public Transport Research Group:} Deputy director of research group with Dr. Graham Currie, conducting industry partnered public transportation research in Melbourne, Australia.}
+   	
+   	\cventry[1pt]{2014-2018}{Graduate Research Assistant -- UMass Amherst}{}{}{}{}
+   	\cvitem[-14pt]{\refno{tripod}}{}
+   	\cvlistitem{\textit{\bfseries Sustainable Travel Incentives with Prediction, Optimization and Personalization:} Joint project with MIT to develop an incentive based market optimized transportation model to reduce energy consumption and emissions. Sponsored by the U.S. DOE ARPA-E.}
+   	
+   	\cvitem[-14pt]{\refno{ithim}}{}
+   	\cvlistitem{\textit{\bfseries Integrated Transport and Health Impacts Model:} Data collection and analysis to calibrate existing models for Commonwealth of Massachusetts. Sponsored by the Massachusetts Department of Public Health.}
+   	
+	\cvitem[-14pt]{\refno{massdotbus}}{}
+	\cvlistitem{\textit{\bfseries Commuter Bus Demand, Incentives for Modal Shift, and Impact on Greenhouse Gas Emissions:} An exploratory investigation of expanded commuter bus service into Boston aimed at reducing greenhouse gases. Sponsored by the Massachusetts DOT.}
+	
+	\cvitem[-14pt]{\refno{bikeinfra}}{}
+	\cvlistitem{\textit{\bfseries Bicycle Infrastructure \& Safety Research:} Developed a sinusoidal model seasonal bicycle demand estimation and its application in analyzing bicycle--vehicle crash exposure.}
+
+	\cvitem[-14pt]{\refno{hpl-vis}}{}
+	\cvlistitem{\textit{\bfseries Visually Impaired Pedestrian Safety at Roundabout Crossings:} Developed a novel dynamic roundabout crosswalk warning sign for vulnerable pedestrians. Sponsored by the U.S. DOT SaferSim UTC.}
+	
+	\cvitem[-14pt]{\refno{hpl-bike}}{}
+	\cvlistitem{\textit{\bfseries Infrastructure Strategies for Safer Cycling: An evaluation of driver behavior:} Evaluated driver behavior when approaching various bicycle infrastructure using simulator. Sponsored by the U.S. DOT SaferSim UTC.}
+		
+	%INDUSTRY
+	%\cvitem{\bfseries INDUSTRY}{}
+	\cventry{2015--2017}{Community Planner}{Volpe Transportation Center (U.S. DOT)}{Cambridge, MA}{}{}
+	\cvlistitem{Developed emission modeling tools, collected and analyzed car-following traffic data, and prepared Federal reports for safety projects.}
+	
+	%	\cventry{2013--2014}{Design Engineer}{Sandis Civil Engineers, Planners, Surveyors}{Oakland, CA}{}{}
+	%	\cvlistitem{Civil engineering for university, hospital, and large corporate campus projects.}
+	%	
+	%	\cventry{2011--2013}{Assistant Engineer}{Benjamini and Associates, Inc.}{San Francisco, CA}{}{}
+	%	\cvlistitem{Design of accessible curb ramps for the City of San Francisco and small residential projects.}
+	
+	%\cventry{2011--2014}{Lead Instructor}{Treasure Island Sailing Center}{San Francisco, CA}{}{}
+	%\cvlistitem{Weekend instructor at non-profit community sailing center educating local disadvantaged or disabled youth and adult students in sailing and boating skills.}
+
+	\section{COMPUTER SKILLS}
+	\cvitem[0pt]{\small Proficient:}{ \textit{R}, \LaTeX, Git, ArcGIS, QGIS, AutoCAD, Adobe InDesign and Illustrator, and Visual Basic}
+	\cvitem{\small Familiar:}{Python, C++, Javascript, MySQL, Adobe Photoshop}
+
+   	\section{AWARDS}
+   	\cvitemwithcomment{2018}{Eno Fellow}{Eno Future Leadership Conference}
+  	\cvitemwithcomment{2015-2018}{Dwight D. Eisenhower Transportation Fellowship}{U.S. Department of Transportation}
+ 	\cvitemwithcomment{2017}{Outstanding Student of the Year, New England UTC}{U.S. Department of Transportation}
+   	\cvitemwithcomment{2016}{Outstanding Student of the Year, SaferSim UTC}{U.S. Department of Transportation}
+	\cvitemwithcomment{}{Daniel B. Fambro Student Paper Award}{International ITE}
+   	\cvitemwithcomment{}{$1^{st}$ Place Student Paper Award}{Northeast District ITE}
+%   	\cvitemwithcomment{}{$3^{rd}$ Place Poster Award}{Northeastern University ITE}{}{}{}
+% 	\cvitemwithcomment{}{Student's choice poster award}{UMass Tech Day Symposium}{}{}{}
+ 	\pagebreak
+
+	\section{JOURNAL PUBLICATIONS}
+	\cvitem{2020\refno{Fournier20120workpop}}{\hspace{0cm}\bibentry{Fournier2020workpop}}
+	\cvitem{\refno{Fournier2019bikesim}}{\hspace{0cm}\bibentry{Fournier2020bikesim}}
+	\cvitem{\refno{Aston2020}}{\hspace{0cm}\bibentry{Aston2020}}
+	\cvitem{\refno{Currie2020}}{\hspace{0cm}\bibentry{Currie2020}}
+	\cvitem{2018\refno{Christofa2018}}{\hspace{0cm}\bibentry{Christofa2018}}
+	\cvitem{2017\refno{Fournier2017sine}}{\hspace{0cm}\bibentry{Fournier2017sine}. \textbf{Daniel B. Fambro Student Paper Award}}	
+	\cvitem{\refno{Fournier2017mixed}}{\hspace{0cm}\bibentry{Fournier2017mixed}.}
+
+	
+	\section{SELECT PRESENTATIONS \& PROCEEDINGS}
+	%2020
+%	\cvitem{2020\refno{Fournier2020VOT}}{\hspace{0em}\bibentry{Fournier2020VOT} [Poster presentation]}
+%	\cvitem{\refno{Currie2020amenities}}{\hspace{0em}\bibentry{Currie2020amenities} [Poster presentation]}
+	
+	%2019
+	\cvitem{2019\refno{Fournier2019isttt}}{\hspace{0em}\bibentry{Fournier2019isttt} [Poster presentation]}
+%	\cvitem{\refno{Fournier2019bikeseason}}{\hspace{0em}\bibentry{Fournier2018bikeseason} [Poster presentation]}
+	\cvitem{\refno{Fournier2019ieee}}{\hspace{0em}\bibentry{Fournier2019ieee} [Accepted for presentation]}
+	\cvitem{\refno{Currie2019thredbodrt}}{\hspace{0em}\bibentry{Currie2019thredbodrt} [Accepted for workshop presentation]}
+	\cvitem{\refno{Currie2019thredboamenity}}{\hspace{0em}\bibentry{Currie2019thredboamenity} [Accepted for workshop presentation]}
+%	\cvitem{\refno{Currie2019atrf}}{\hspace{0em}\bibentry{Currie2019atrf} [Accepted for workshop presentation]}
+	%2018
+	\cvitem{2018\refno{Fournier2018ieee}}{\hspace{0em}\bibentry{Fournier2018ieee} [Podium presentation by Arun Akkinepally]}
+%	\cvitem{\refno{Fournier2018bikesafe}}{\hspace{0em}\bibentry{Fournier2018bikesafe} [Poster presentation]}
+%	\cvitem{\refno{Fournier2018trbsynth}}{\hspace{0em}\bibentry{Fournier2018trbsynth} [Poster presentation]}
+		
+	%2017
+\cvitem{2017\refno{podium-naples2017}}{\hspace{0em}\bibentry{Fournier2017mt-its} [Podium presentation]}
+%	\cvitem{\refno{poster-eisenhower2017}}{\hspace{0em}\bibentry{Fournier2017trbsafety} [Poster presentation] \textbf{Eisenhower Award}}
+%	\cvitem{\refno{podium-itedata2017}}{\hspace{0em}\bibentry{ITE2017} [Podium presentation]}
+	
+	%2016
+%	\cvitem{2016\refno{pospod-itebikeinfra2016}}{\hspace{0em}\bibentry{ITE2016} [Poster and podium presentation]}
+	
+%	\cvitem{\refno{NEUITE2016}}{\hspace{0em}\bibentry{NEUITE2016} [Poster presentation] \textbf{3$^{rd}$ Place Poster Award}}
+%	\cvitem{\refno{Fournier2016trbsafety}}{\hspace{0em}\bibentry{Fournier2016trbsafety} [Poster presentation] \textbf{Eisenhower Award}}
+%	\cvitem{\refno{Fournier2016trbdemand}}{\hspace{0em}\bibentry{Fournier2016trbdemand} [Poster presentation]}
+	\cvitem{2016\refno{UTCspotlight2016}}{\hspace{0em}\bibentry{UTCspotlight2016} [Podium presentation]}
+%	\cvitem{\refno{NTSC2016}}{\hspace{0em}\bibentry{NTSC2016} Podium presentation.}
+%	\cvitem{\refno{Safersim2016wisconsin}}{\hspace{0em}\bibentry{Safersim2016wisconsin} [Poster and podium presentation]}
+%	\cvitem{\refno{Safersim2016iowa}}{\hspace{0em}\bibentry{Safersim2016iowa} [Poster and podium presentation]}
+	
+	%2015
+%	\cvitem{2015\refno{Techday2015}}{\hspace{0em}\bibentry{Techday2015} [Poster and podium presentation]}
+	\cvitem{\refno{RSS2015}}{\hspace{0em}\bibentry{RSS2015} [Poster and podium presentation]}
+%	\cvitem{\refno{Safersim2015}}{\hspace{0em}\bibentry{Safersim2015} [Poster and podium presentation]}
+	
+% 	\section{LEADERSHIP \& ACTIVITIES}
+% 	\cvlistitem[0pt]{Faculty hiring committee member}
+% 	\cvlistitem[0pt]{Planning Student Organization Treasurer}
+% 	\cvlistitem[0pt]{New England Institute of Transportation Engineers Student Member}
+% 	\cvlistitem[0pt]{American Planning Association Student Member}
+% 	\cvlistitem[0pt]{San Francisco Bicycle Coalition, MassBike, League of American Bicyclists}
+
+\newcounter{refct}
+
+\refstepcounter{refct}
+\refstepcounter{refct}
+\refstepcounter{refct}
+
+\end{document}
