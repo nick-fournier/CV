@@ -2,7 +2,7 @@
 
 \usepackage{natbib}
 \usepackage{bibentry,xr}
-\usepackage[left=0.5in, right=0.75in, top=0.375in, bottom=0.5in]{geometry}
+\usepackage[left=0.25in, right=0.5in, top=0.375in, bottom=0.5in]{geometry}
 
 \usepackage{lastpage}
 \usepackage[utf8]{inputenc}
@@ -58,6 +58,9 @@
 	\cvitem[#1]{}{\listitemsymbol\begin{minipage}[t]{\listitemcolumnwidth}#2\end{minipage}}}
 
 
+\renewcommand*{\namefont}{\fontsize{32}{34}\mdseries\upshape}
+
+
 \makeatletter
 \@ifpackageloaded{moderncvstyleclassic}{%
 	\let\oldsection\section%
@@ -84,8 +87,12 @@
 	\bibliographystyle{plainnat}
 	
    	\makecvtitle
-   	
-	\footnotetext{* Numbered and lettered citations refer to relevant publications and github repositories.}   	\vspace{-36pt}   	
+   	   	
+	\footnotetext{* Numbered and lettered citations refer to relevant publications and GitHub repositories.}   	\vspace{-36pt}   	
+	
+	
+   	\section{OBJECTIVE}
+   	Accomplished postdoctoral researcher seeking to leverage my advanced statistical and analytical skills in data science and UX research into a career in tech. My hybrid background in both engineering (transportation) and social science (urban planning) allows me to move easily between quantitative and qualitative perspectives. I am passionate about transportation and its intersection throughout society, and possess a wealth of domain knowledge in the subject.    	
    	
    	\section{EDUCATION}
    	\cventry{}{University of Massachusetts, Amherst}{}{}{}{}
@@ -106,11 +113,11 @@
    	\cventry[1pt]{2020-~~~~~~}{Postdoctoral Scholar -- University of California Berkeley}{\hrule}{}{}{}
    	\cvitem[-14pt]{}{}
 
-  	\cvlistitem{\textit{\bfseries Travel Futures: Exploring the operational and equity benefits of a pre-pay dynamic tolling system [lead researcher]:} California State sponsored (SB1) project exploring a ``futures'' market mechanism augmenting dynamic toll pricing systems to optimize the price elasticity of demand and revenue collection. System uses Kernel Density Estimation to smooth traffic flow data for predictive travel forecasting and econometric pricing models. Currently developing an \textit{R}-based analytical simulation model to explore the parameter relationships for revenue and traffic flow trade-offs \ref{git:futures}.}
+  	\cvlistitem{\textit{\bfseries Travel Futures: Exploring the operational and equity benefits of a pre-pay dynamic tolling system [lead researcher]:} California State sponsored (SB1) project exploring a ``futures'' market mechanism augmenting dynamic toll pricing systems to optimize the price elasticity of demand and revenue collection. System uses Kernel Density Estimation to smooth traffic flow data for forecasting and pricing models. Currently developing an analytical simulation in \textit{R} to explore revenue and traffic flow trade-offs \ref{git:futures}.}
    	
-  	\cvlistitem{\textit{\bfseries Complete Cities: Bicycle network connectivity evaluation methodology [lead researcher]:} Caltrans sponsored project developing a bicycle network connectivity performance measure using graph theory and user preference criteria (e.g., route choice models). Intended to be a Python-based tool for evaluating street networks in GIS.}
+  	\cvlistitem{\textit{\bfseries Complete Cities: Bicycle network connectivity evaluation methodology [lead researcher]:} Caltrans sponsored project developing a bicycle network connectivity performance measure using graph theory and user preference criteria (e.g., route choice models). Intended deployment as Python tool for GIS.}
   		
-	\cvlistitem{\textit{\bfseries Erroneous High Occupancy Vehicle (HOV) Degradation:} Developed Python-based machine learning program to detect operational but mislabeled traffic sensors in Caltrans data using a variety of methods. Methods include supervised learning, such as k-Nearest Neighbor, Logistic Regression, and Random Forest; as well as unsupervised methods, such as Support Vector Machines, Local Outlier Factor, Isolation Forest, and Robust Covariance Anomaly Detection \ref{git:hov}.}
+	\cvlistitem{\textit{\bfseries Erroneous High Occupancy Vehicle (HOV) Degradation:} Developed Python program to detect operational but mislabeled traffic sensors in Caltrans data using machine learning methods including supervised learning, such as k-Nearest Neighbor, Logistic Regression, and Random Forest; as well as unsupervised methods, such as Support Vector Machines, Local Outlier Factor, Isolation Forest, and Robust Covariance Anomaly Detection \ref{git:hov}.}
 	
   	\cvlistitem{\textit{\bfseries Bicycle level of service measures for the CA State Highway System:} Caltrans sponsored UX research project to determine bicyclist's infrastructure preferences using virtual reality bicycle simulator. Estimated using a Latent Class Choice Model capable of accounting for user heterogeneity. Results to align with ``Complete Cities'' project.}
    	
@@ -122,7 +129,7 @@
    	
    	\cventry[1pt]{2014-2018}{Graduate Research Assistant -- UMass Amherst}{\hrule}{}{}{}
    	\cvitem[-14pt]{}{}
-   	\cvlistitem{\textit{\bfseries Sustainable Travel Incentives with Prediction, Optimization and Personalization:} Developed novel combinatorial optimization algorithm in \textit{R} and C++ to synthesize population data (demographics, spatial home-work locations, household groups, etc.) for 6 million people in the Greater Boston Area. Mixed-method techniques include Bayesian Networks, Markov chain Monte Carlo simulation, iterative fitting (matrix raking), robust regression, LASSO/Ridge regularization, and gradient descent optimization. This work was part of a large-scale agent-based simulation to lower energy consumption through user incentives in a joint project with MIT sponsored by the Advanced Research Projects Agency - Energy (ARPA-e) of the US Department of Energy [\ref{vot},\ref{popsynth}] \ref{git:poptools}.}
+   	\cvlistitem{\textit{\bfseries Sustainable Travel Incentives with Prediction, Optimization and Personalization:} Developed novel combinatorial optimization algorithm in \textit{R} and some C++ to synthesize population data (demographics, spatial home-work locations, household groups, etc.) for 6 million people. Mixed-methods include Bayesian Networks, Markov chain Monte Carlo simulation, iterative fitting (matrix raking), robust regression, LASSO/Ridge regularization, and gradient descent optimization. This work was part of a large-scale agent-based simulation to lower energy consumption through user incentives in a joint project with MIT sponsored by the Advanced Research Projects Agency - Energy (ARPA-e) of the US Department of Energy [\ref{vot},\ref{popsynth}] \ref{git:poptools}.}
    		
 	\cvitem[-14pt]{}{}
 	\cvlistitem{\textit{\bfseries Infrastructure Strategies for Safer Cycling: An evaluation of driver behavior using a driving simulator:} USDOT sponsored UX research project that used full-scale driving simulator to evaluate bicycle infrastructure effectiveness based on driver behavior and characteristics. Analyzed results using statistical inference techniques like ANOVA and interaction models in \textit{R} [\ref{bikesim},\ref{bikesine},\ref{bikeinfra}].}
@@ -137,16 +144,16 @@
 % 	\pagebreak	
 		
 	\section{SELECT GITHUB REPOSITORIES}
-	\cvitem{\gitcount \label{git:hov}}{ \url{https://github.com/nick-fournier/hov-degradation}: Source code, working executable (.exe), and user manual for misconfigured HOV sensor detecting machine learning Python code.}
-	
 	\cvitem{\gitcount \label{git:futures}}{\url{https://github.com/nick-fournier/travel-futures}: \textit{R} source code and paper draft for ``travel futures'' simulation model and results.}
 	
+	\cvitem{\gitcount \label{git:hov}}{ \url{https://github.com/nick-fournier/hov-degradation}: Source code, working executable (.exe), and user manual for misconfigured HOV sensor detecting machine learning Python code.}
+	
 	\cvitem{\gitcount \label{git:mmlos}}{ \url{https://github.com/nick-fournier/MMLOS}: Source code for multi-modal level of service calculation tool in \textit{R}.}	
+
+	\cvitem{\gitcount \label{git:poptools}}{ \url{https://github.com/nick-fournier/poptools}: \textit{R} and C++ source code and paper draft for population synthesis. Ongoing project to create open source tool.}
 			
 	\cvitem{\gitcount \label{git:ped-transit}}{ \url{https://github.com/nick-fournier/ped-transit-priority}: \textit{R} source code and paper draft for hybrid transit and pedestrian priority simulation model and results.}
 		
-	\cvitem{\gitcount \label{git:poptools}}{ \url{https://github.com/nick-fournier/poptools}: \textit{R} and C++ source code and paper draft for population synthesis. Ongoing project to create open source tool.}
-
 		
 	\cvitem{\gitcount \label{git:mltutorial}}{ \url{https://github.com/nick-fournier/machine-learning-lab}: Lead a UC Berkeley class project to explore bicycle data and correct for bias by fusing data and using machine learning techniques in \textit{R}.}
 	
