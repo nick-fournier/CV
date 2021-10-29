@@ -1,0 +1,187 @@
+\documentclass[10pt,letter,sans]{moderncv}
+
+\usepackage{natbib}
+\usepackage{bibentry,xr}
+\usepackage[left=0.5in, right=0.75in, top=0.375in, bottom=0.5in]{geometry}
+
+\usepackage{lastpage}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
+\usepackage[symbol]{footmisc}
+\moderncvstyle{classic}
+\moderncvcolor{blue}
+\providecommand{\NOOP}[1]{}
+\setlength{\hintscolumnwidth}{0.1\textwidth}
+
+\newcounter{gitref}
+\renewcommand{\thegitref}{[\alph{gitref}]}
+\newcommand{\gitcount}{ \refstepcounter{gitref} \thegitref}
+
+	
+\linespread{0.9}
+
+\pagestyle{fancy}
+\rfoot{\thepage\ of \pageref{LastPage}}
+
+%DOI link
+\newcommand*{\doi}[1]{\href{http://dx.doi.org/#1}{doi: #1}}
+
+
+
+\renewcommand*{\cvitem}[3][6pt]{%
+	\begin{tabular}{@{}p{\hintscolumnwidth}@{\hspace{\separatorcolumnwidth}}p{\maincolumnwidth}@{}}%
+		\raggedleft\hintstyle{#2} &{#3}%
+	\end{tabular}%
+	\par\addvspace{#1}}
+
+\renewcommand*{\cventry}[7][0pt]{%
+	\cvitem[#1]{#2}{%
+		{\bfseries#3}%
+		\ifthenelse{\equal{#4}{}}{}{, {\slshape#4}}%
+		\ifthenelse{\equal{#5}{}}{}{, #5}%
+		\ifthenelse{\equal{#6}{}}{}{, #6}%
+		\strut%
+		\ifx&#7&%
+		\else{\newline{}\begin{minipage}[t]{\linewidth}\small#7\end{minipage}}\fi}}
+
+\renewcommand*{\cvitemwithcomment}[4][0pt]{%
+	\savebox{\cvitemwithcommentbox}{{#3}}%
+	\setlength{\cvitemwithcommentskilllength}{\widthof{\usebox{\cvitemwithcommentbox}}}%
+	\setlength{\cvitemwithcommentcommentlength}{\maincolumnwidth-\separatorcolumnwidth-\cvitemwithcommentskilllength}%
+	\cvitem[#1]{#2}{%
+		\begin{minipage}[t]{\cvitemwithcommentskilllength}\usebox{\cvitemwithcommentbox}\end{minipage}%
+		\hfill% fill of \separatorcolumnwidth
+		\begin{minipage}[t]{\cvitemwithcommentcommentlength}\raggedleft\small\itshape#4\end{minipage}}}
+
+\renewcommand*{\cvlistitem}[2][6pt]{%
+	\cvitem[#1]{}{\listitemsymbol\begin{minipage}[t]{\listitemcolumnwidth}#2\end{minipage}}}
+
+
+\makeatletter
+\@ifpackageloaded{moderncvstyleclassic}{%
+	\let\oldsection\section%
+	\renewcommand{\section}[1]{\leavevmode\unskip\vspace*{-\baselineskip}\oldsection{#1}}%
+}{%
+}
+\makeatother
+
+\newcounter{refcounter}
+\newcommand{\refno}[1]{\refstepcounter{refcounter} [\therefcounter]\label{#1}}
+%\newcommand{\refno}[1]{}
+
+%CONTACT
+\firstname{Nicholas}
+\familyname{Fournier, PhD}
+\address{University of California, Berkeley}{}{}
+\mobile{774-236-0293} % Phone number
+\email{Nick.Fournier@Berkeley.edu} % Email ID
+\social[linkedin][www.linkedin.com/in/nicholas-fournier/]{www.linkedin.com/in/nicholas-fournier/}
+
+
+\begin{document}
+	\nobibliography{../mybib}
+	\bibliographystyle{plainnat}
+	
+   	\makecvtitle
+   	
+	\footnotetext{* Numbered and lettered citations refer to relevant publications and github repositories.}   	\vspace{-36pt}   	
+   	
+   	\section{EDUCATION}
+   	\cventry{}{University of Massachusetts, Amherst}{}{}{}{}
+   	\cvitemwithcomment[0pt]{2019}{PhD Civil Engineering -- Transportation, \itshape GPA: 4.0}{}
+   	\cvitemwithcomment[0pt]{}{\itshape Dissertation: Equity and efficiency in multi-modal transportation systems}{}
+	\cvitemwithcomment[0pt]{2018}{MS Civil Engineering -- Transportation \& Master of Regional Planning}{}
+   	\cvitemwithcomment[0pt]{2011}{BS Civil \& Environmental Engineering}{}
+   	
+      	   	
+   	\section{TECHNICAL SKILLS}
+	\cvitem[0pt]{\small Areas of expertise:}{Machine learning and optimization [\ref{optequity}]\footnotemark, discrete choice and predictive econometric models [\ref{vot}], Bayesian networks [\ref{popsynth}], Markov chain Monte Carlo simulation [\ref{popsynth}], traffic flow theory [\ref{pedtransit}], human factors [\ref{bikesim}], crash/risk analysis [\ref{bikeinfra}], and data visualization.}
+	
+	\cvitem[0pt]{\small Coding:}{Python, \textit{R}, Django, \LaTeX, git, and some C++, Java, SQL}
+	
+	\cvitem{\small Other:}{Linux systems, Arc/QGIS, CAD, Postgres, Adobe Illustrator and InDesign}
+
+   	\section{RESEARCH EXPERIENCE}
+   	\cventry[1pt]{2020-~~~~~~}{Postdoctoral Scholar -- University of California Berkeley}{\hrule}{}{}{}
+   	\cvitem[-14pt]{}{}
+
+  	\cvlistitem{\textit{\bfseries Travel Futures: Exploring the operational and equity benefits of a pre-pay dynamic tolling system [lead researcher]:} California State sponsored (SB1) project exploring a ``futures'' market mechanism augmenting dynamic toll pricing systems to optimize the price elasticity of demand and revenue collection. System uses Kernel Density Estimation to smooth traffic flow data for predictive travel forecasting and econometric pricing models. Currently developing an \textit{R}-based analytical simulation model to explore the parameter relationships for revenue and traffic flow trade-offs \ref{git:futures}.}
+   	
+  	\cvlistitem{\textit{\bfseries Complete Cities: Bicycle network connectivity evaluation methodology [lead researcher]:} Caltrans sponsored project developing a bicycle network connectivity performance measure using graph theory and user preference criteria (e.g., route choice models). Intended to be a Python-based tool for evaluating street networks in GIS.}
+  		
+	\cvlistitem{\textit{\bfseries Erroneous High Occupancy Vehicle (HOV) Degradation:} Developed Python-based machine learning program to detect operational but mislabeled traffic sensors in Caltrans data using a variety of methods. Methods include supervised learning, such as k-Nearest Neighbor, Logistic Regression, and Random Forest; as well as unsupervised methods, such as Support Vector Machines, Local Outlier Factor, Isolation Forest, and Robust Covariance Anomaly Detection \ref{git:hov}.}
+	
+  	\cvlistitem{\textit{\bfseries Bicycle level of service measures for the CA State Highway System:} Caltrans sponsored UX research project to determine bicyclist's infrastructure preferences using virtual reality bicycle simulator. Estimated using a Latent Class Choice Model capable of accounting for user heterogeneity. Results to align with ``Complete Cities'' project.}
+   	
+  	\cvlistitem{\textit{\bfseries Improved Analysis Methodologies and Strategies for Complete Streets:} Development of improved analysis methodologies through computer simulation and field testing in real-world complete street projects with emerging signal technologies. Developed \textit{R}-based package for estimating Bicycle Level of Service using the Highway Capacity Manual's methodology with proposed improvements [\ref{bikepave}] \ref{git:mmlos}.}
+  	  	   	
+   	\cventry[1pt]{2019-2020}{Research Fellow -- Monash University, Melbourne, Australia}{\hrule}{}{}{}
+   	\cvitem[-14pt]{}{}
+   	\cvlistitem{\textit{\bfseries Public Transport Research Group:} Deputy director of research group, advising a team of doctoral students conducting industry partnered research in public transportation, transportation policy analysis, and transportation economics [\ref{astonlanduse},\ref{curriedrt}].}
+   	
+   	\cventry[1pt]{2014-2018}{Graduate Research Assistant -- UMass Amherst}{\hrule}{}{}{}
+   	\cvitem[-14pt]{}{}
+   	\cvlistitem{\textit{\bfseries Sustainable Travel Incentives with Prediction, Optimization and Personalization:} Developed novel combinatorial optimization algorithm in \textit{R} and C++ to synthesize population data (demographics, spatial home-work locations, household groups, etc.) for 6 million people in the Greater Boston Area. Mixed-method techniques include Bayesian Networks, Markov chain Monte Carlo simulation, iterative fitting (matrix raking), robust regression, LASSO/Ridge regularization, and gradient descent optimization. This work was part of a large-scale agent-based simulation to lower energy consumption through user incentives in a joint project with MIT sponsored by the Advanced Research Projects Agency - Energy (ARPA-e) of the US Department of Energy [\ref{vot},\ref{popsynth}] \ref{git:poptools}.}
+   		
+	\cvitem[-14pt]{}{}
+	\cvlistitem{\textit{\bfseries Infrastructure Strategies for Safer Cycling: An evaluation of driver behavior using a driving simulator:} USDOT sponsored UX research project that used full-scale driving simulator to evaluate bicycle infrastructure effectiveness based on driver behavior and characteristics. Analyzed results using statistical inference techniques like ANOVA and interaction models in \textit{R} [\ref{bikesim},\ref{bikesine},\ref{bikeinfra}].}
+	
+ 	\pagebreak	
+	\subsection{ADDITIONAL WORK EXPERIENCE}
+		
+	\cventry{2015--2017}{Community Planner (Pathways Intern)}{Volpe Transportation Center (U.S. DOT)}{Cambridge, MA}{}{}	
+	\cventry{2013--2014}{Design Engineer}{Sandis Civil Engineers, Planners, Surveyors}{Oakland, CA}{}{}
+	\cventry{2011--2013}{Assistant Engineer}{Benjamini and Associates, Inc.}{San Francisco, CA}{}{}
+
+% 	\pagebreak	
+		
+	\section{SELECT GITHUB REPOSITORIES}
+	\cvitem{\gitcount \label{git:hov}}{ \url{https://github.com/nick-fournier/hov-degradation}: Source code, working executable (.exe), and user manual for misconfigured HOV sensor detecting machine learning Python code.}
+	
+	\cvitem{\gitcount \label{git:futures}}{\url{https://github.com/nick-fournier/travel-futures}: \textit{R} source code and paper draft for ``travel futures'' simulation model and results.}
+	
+	\cvitem{\gitcount \label{git:mmlos}}{ \url{https://github.com/nick-fournier/MMLOS}: Source code for multi-modal level of service calculation tool in \textit{R}.}	
+			
+	\cvitem{\gitcount \label{git:ped-transit}}{ \url{https://github.com/nick-fournier/ped-transit-priority}: \textit{R} source code and paper draft for hybrid transit and pedestrian priority simulation model and results.}
+		
+	\cvitem{\gitcount \label{git:poptools}}{ \url{https://github.com/nick-fournier/poptools}: \textit{R} and C++ source code and paper draft for population synthesis. Ongoing project to create open source tool.}
+
+		
+	\cvitem{\gitcount \label{git:mltutorial}}{ \url{https://github.com/nick-fournier/machine-learning-lab}: Lead a UC Berkeley class project to explore bicycle data and correct for bias by fusing data and using machine learning techniques in \textit{R}.}
+	
+	
+	\cvitem{\gitcount \label{git:mltutorial}}{ \url{https://github.com/nick-fournier/Value-of-Time-Exploration}: Analyzed travel ``value of time'' by fusing travel survey data with travel time matrices and pricing tables for the Greater Boston Area. Estimated multinomial logit models in \textit{R} with varying interaction terms [\ref{vot}]. }
+	
+	%\cvitem{\gitcount \label{git:pendulum}}{ \url{https://github.com/nick-fournier/pendulum-django}: Invoicing app RESTful back-end integrated with Plaid and Stripe using Python-based Django web development framework on Heroku.}
+
+
+	\section{SELECT PUBLICATIONS}
+	\cvitem{2021\refno{pedtransit}}{\hspace{0cm}\bibentry{Fournier2021pedtransit}.}
+	\cvitem{\refno{optequity}}{\hspace{0cm}\bibentry{Fournier2021optequity}.}
+	\cvitem{\refno{bikepave}}{\hspace{0cm}\bibentry{Huang2021}.}
+	\cvitem{2020\refno{vot}}{\hspace{0cm}\bibentry{Fournier2020vot}}
+	\cvitem{\refno{popsynth}}{\hspace{0cm}\bibentry{Fournier2020workpop}}
+	\cvitem{\refno{bikesim}}{\hspace{0cm}\bibentry{Fournier2020bikesim}}
+	\cvitem{\refno{astonlanduse}}{\hspace{0cm}\bibentry{Aston2020}}
+	\cvitem{\refno{curriedrt}}{\hspace{0cm}\bibentry{Currie2020}}
+	\cvitem{2017\refno{bikesine}}{\hspace{0cm}\bibentry{Fournier2017sine}}	
+	\cvitem{\refno{bikeinfra}}{\hspace{0cm}\bibentry{Fournier2017mixed}}
+	
+   	\section{AWARDS}
+	\cvitemwithcomment{2018}{Eno Fellow}{Eno Future Leadership Conference}
+	\cvitemwithcomment{2015-2018}{Dwight D. Eisenhower Transportation Fellowship}{U.S. Department of Transportation}
+	\cvitemwithcomment{2016-2017}{Outstanding Student of the Year}{U.S. Department of Transportation}
+	\cvitemwithcomment{2015}{Daniel B. Fambro Student Paper Award [\ref{bikesine}]}{International ITE}
+
+	
+% 	\section{LEADERSHIP \& ACTIVITIES}
+% 	\cvlistitem[0pt]{Co-host of Eureka! Externships, Girls Inc., Holyoke, MA}
+% 	\cvlistitem[0pt]{Faculty hiring committee member}
+% 	\cvlistitem[0pt]{UMass Summer Transportation Institute presenter and host}
+% 	\cvlistitem[0pt]{Planning Student Organization Treasurer}
+% 	\cvlistitem[0pt]{New England Institute of Transportation Engineers Student Member}
+% 	\cvlistitem[0pt]{American Planning Association Student Member}
+% 	\cvlistitem[0pt]{San Francisco Bicycle Coalition, MassBike, League of American Bicyclists}
+
+\end{document}
